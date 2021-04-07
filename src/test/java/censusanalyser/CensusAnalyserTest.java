@@ -8,9 +8,9 @@ public class CensusAnalyserTest {
 
     private static final String INDIA_CENSUS_CSV_FILE_PATH = "./src/test/resources/IndiaStateCensusData.csv";
     private static final String WRONG_CSV_FILE_PATH = "./src/main/resources/IndiaStateCensusData.csv";
-    private static final String WRONG_FILE_EXTENSION = "./src/main/resources/IndiaStateCensusData.txt";
-    private static final String WRONG_DELIMITER_IN_DATA = "./src/main/resources/IndiaStateCensusDataWrongDelimiter.txt";
-    private static final String WRONG_HEADER_IN_DATA = "./src/main/resources/IndiaStateCensusDataWrongHeader.txt";
+    private static final String WRONG_FILE_EXTENSION = "./src/test/resources/IndiaStateCensusData.txt";
+    private static final String WRONG_DELIMITER_IN_DATA = "/home/phoujdar/eclipse-workspace/CensusAnalyser/src/test/resources/IndiaStateCensusDataWrongDelimiter.csv";
+    private static final String WRONG_HEADER_IN_DATA = "./src/test/resources/IndiaStateCensusDataWrongHeader.csv";
 
     @Test
     public void givenIndianCensusCSVFileReturnsCorrectRecords() {
@@ -55,7 +55,7 @@ public class CensusAnalyserTest {
             exceptionRule.expect(CensusAnalyserException.class);
             censusAnalyser.loadIndiaCensusData(WRONG_DELIMITER_IN_DATA);
         } catch (CensusAnalyserException e) {
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.DATA_FORMAT_PROBLEM,e.type);
         }
     }
 
@@ -65,11 +65,10 @@ public class CensusAnalyserTest {
             CensusAnalyser censusAnalyser = new CensusAnalyser();
             ExpectedException exceptionRule = ExpectedException.none();
             exceptionRule.expect(CensusAnalyserException.class);
-            censusAnalyser.loadIndiaCensusData(WRONG_DELIMITER_IN_DATA);
+            censusAnalyser.loadIndiaCensusData(WRONG_HEADER_IN_DATA);
         } catch (CensusAnalyserException e) {
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
+            e.printStackTrace();
+            Assert.assertEquals(CensusAnalyserException.ExceptionType.DATA_FORMAT_PROBLEM,e.type);
         }
     }
-
-
 }
