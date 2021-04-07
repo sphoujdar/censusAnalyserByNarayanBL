@@ -67,8 +67,9 @@ public class CensusAnalyserTest {
             exceptionRule.expect(CensusAnalyserException.class);
             censusAnalyser.loadIndiaCensusData(WRONG_DELIMITER_IN_DATA);
         } catch (CensusAnalyserException e) {
-            e.printStackTrace();
             Assert.assertEquals(CensusAnalyserException.ExceptionType.CENSUS_FILE_PROBLEM,e.type);
         }
     }
+
+
 }

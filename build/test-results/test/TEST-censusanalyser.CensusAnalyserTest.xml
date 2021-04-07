@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="censusanalyser.CensusAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-07T02:11:57" hostname="phoujdar" time="0.012">
+<testsuite name="censusanalyser.CensusAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-04-07T02:18:54" hostname="phoujdar" time="0.011">
   <properties/>
-  <testcase name="givenStateCensusData_WithWrongDelimiterType_ShouldThrowException" classname="censusanalyser.CensusAnalyserTest" time="0.012"/>
+  <testcase name="givenStateCensusData_WithWrongHeader_ShouldThrowException" classname="censusanalyser.CensusAnalyserTest" time="0.011"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[censusanalyser.CensusAnalyserException: ./src/main/resources/IndiaStateCensusDataWrongDelimiter.txt
 	at censusanalyser.CensusAnalyser.loadIndiaCensusData(CensusAnalyser.java:28)
-	at censusanalyser.CensusAnalyserTest.givenStateCensusData_WithWrongDelimiterType_ShouldThrowException(CensusAnalyserTest.java:55)
+	at censusanalyser.CensusAnalyserTest.givenStateCensusData_WithWrongHeader_ShouldThrowException(CensusAnalyserTest.java:68)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
