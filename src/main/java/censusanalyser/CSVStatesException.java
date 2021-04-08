@@ -1,7 +1,6 @@
 package censusanalyser;
 
 public class CSVStatesException extends Exception{
-
     enum ExceptionTypeStates {
         CSV_FILE_PROBLEM , DATA_FORMAT_PROBLEM
     }
@@ -17,5 +16,4 @@ public class CSVStatesException extends Exception{
         super(message, cause);
         this.type = type;
     }
-
 }
