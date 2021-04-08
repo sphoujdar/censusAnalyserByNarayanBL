@@ -7,12 +7,11 @@ import org.junit.rules.ExpectedException;
 import static org.junit.Assert.fail;
 
 public class CSVStatesAnalyserTest {
-
     private static final String STATE_CODE_CSV_FILE_PATH = "./src/test/resources/IndiaStateCode.csv";
-    private static final String STATE_CODE_WRONG_CSV_FILE_PATH = "./src/main/resources/IndianStateCode.csv";
-    private static final String STATE_CODE_WRONG_FILE_EXTENSION = "./src/test/resources/IndianStateCode.txt";
-    private static final String STATE_CODE_WRONG_DELIMITER_IN_DATA = "./src/test/resources/IndiaStateCensusDataWrongDelimiter.csv";
-    private static final String STATE_CODE_WRONG_HEADER_IN_DATA = "./src/test/resources/IndiaStateCensusDataWrongHeader.csv";
+    private static final String STATE_CODE_WRONG_CSV_FILE_PATH = "./src/main/resources/IndiaStateCode.csv";
+    private static final String STATE_CODE_WRONG_FILE_EXTENSION = "./src/test/resources/IndiaStateCode.txt";
+    private static final String STATE_CODE_WRONG_DELIMITER_IN_DATA = "./src/test/resources/IndiaStateCodeWrongDelimiter.csv";
+    private static final String STATE_CODE_WRONG_HEADER_IN_DATA = "./src/test/resources/IndiaStateCodeWrongHeader.csv";
 
     @Test
     public void givenStateCodeDataCSVFile_ReturnsCorrectRecords() {
@@ -33,6 +32,7 @@ public class CSVStatesAnalyserTest {
             ExpectedException exceptionRule = ExpectedException.none();
             exceptionRule.expect(CSVStatesException.class);
             csvStatesAnalyser.loadStatesCodeData(STATE_CODE_WRONG_CSV_FILE_PATH);
+            fail();
         } catch (CSVStatesException e) {
             Assert.assertEquals(CSVStatesException.ExceptionTypeStates.CSV_FILE_PROBLEM,e.type);
         }
@@ -45,6 +45,7 @@ public class CSVStatesAnalyserTest {
             ExpectedException exceptionRule = ExpectedException.none();
             exceptionRule.expect(CSVStatesException.class);
             csvStatesAnalyser.loadStatesCodeData(STATE_CODE_WRONG_FILE_EXTENSION);
+            fail();
         } catch (CSVStatesException e) {
             Assert.assertEquals(CSVStatesException.ExceptionTypeStates.CSV_FILE_PROBLEM,e.type);
         }
@@ -57,6 +58,7 @@ public class CSVStatesAnalyserTest {
             ExpectedException exceptionRule = ExpectedException.none();
             exceptionRule.expect(CSVStatesException.class);
             csvStatesAnalyser.loadStatesCodeData(STATE_CODE_WRONG_DELIMITER_IN_DATA);
+            fail();
         } catch (CSVStatesException e) {
             Assert.assertEquals(CSVStatesException.ExceptionTypeStates.DATA_FORMAT_PROBLEM,e.type);
         }
@@ -65,16 +67,13 @@ public class CSVStatesAnalyserTest {
     @Test
     public void givenStateCodeDataCSVFile_WithWrongHeader_ShouldThrowException() {
         try {
-            CensusAnalyser censusAnalyser = new CensusAnalyser();
+            CSVStatesAnalyser csvStatesAnalyser = new CSVStatesAnalyser();
             ExpectedException exceptionRule = ExpectedException.none();
-            exceptionRule.expect(CensusAnalyserException.class);
-            censusAnalyser.loadIndiaCensusData(STATE_CODE_WRONG_HEADER_IN_DATA);
-        } catch (CensusAnalyserException e) {
-            e.printStackTrace();
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.DATA_FORMAT_PROBLEM,e.type);
+            exceptionRule.expect(CSVStatesException.class);
+            csvStatesAnalyser.loadStatesCodeData(STATE_CODE_WRONG_HEADER_IN_DATA);
+            fail();
+        } catch (CSVStatesException e) {
+            Assert.assertEquals(CSVStatesException.ExceptionTypeStates.DATA_FORMAT_PROBLEM,e.type);
         }
     }
-
-
-
 }
