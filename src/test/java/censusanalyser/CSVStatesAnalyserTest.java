@@ -53,12 +53,12 @@ public class CSVStatesAnalyserTest {
     @Test
     public void givenStateCodeDataCSVFile_WithWrongDelimiterType_ShouldThrowException() {
         try {
-            CensusAnalyser censusAnalyser = new CensusAnalyser();
+            CSVStatesAnalyser csvStatesAnalyser = new CSVStatesAnalyser();
             ExpectedException exceptionRule = ExpectedException.none();
-            exceptionRule.expect(CensusAnalyserException.class);
-            censusAnalyser.loadIndiaCensusData(STATE_CODE_WRONG_DELIMITER_IN_DATA);
-        } catch (CensusAnalyserException e) {
-            Assert.assertEquals(CensusAnalyserException.ExceptionType.DATA_FORMAT_PROBLEM,e.type);
+            exceptionRule.expect(CSVStatesException.class);
+            csvStatesAnalyser.loadStatesCodeData(STATE_CODE_WRONG_DELIMITER_IN_DATA);
+        } catch (CSVStatesException e) {
+            Assert.assertEquals(CSVStatesException.ExceptionTypeStates.DATA_FORMAT_PROBLEM,e.type);
         }
     }
 
